@@ -1,10 +1,18 @@
-var express = require('express');
+;(function(){
 
-var app = express();
-var port = 8888;
+  var express = require('express');
 
-app.use(express.static(__dirname + '/client'))
+  module.exports = function(){
 
-app.listen(process.env.PORT || port, function(){
-  console.log('listening on %d', process.env.PORT || port);
-});
+    var app = express();
+    var port = 8888;
+
+    app.use(express.static(__dirname + '/client'))
+
+    app.listen(process.env.PORT || port, function(){
+      console.log('listening on %d', process.env.PORT || port);
+    });
+
+    return app;
+  }
+})();
