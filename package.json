@@ -1,0 +1,35 @@
+{
+  "name": "atm-lesson-player",
+  "version": "0.0.1",
+  "description": "A player for the ATM lessons I have recorded",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshWyatt/atm-lesson-player.git"
+  },
+  "keywords": [
+    "audio",
+    "player"
+  ],
+  "author": "josh wyatt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshWyatt/atm-lesson-player/issues"
+  },
+  "homepage": "https://github.com/joshWyatt/atm-lesson-player",
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-concat": "^2.4.1",
+    "gulp-inject": "^1.0.2",
+    "gulp-jshint": "^1.8.5",
+    "gulp-livereload": "^2.1.1",
+    "gulp-load-plugins": "^0.7.0",
+    "gulp-open": "^0.3.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sequence": "^0.2.1",
+    "gulp-uglify": "^1.0.1"
+  }
+}
