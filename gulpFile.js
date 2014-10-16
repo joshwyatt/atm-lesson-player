@@ -20,11 +20,11 @@
   }
 
   function scripts(){
-    return gulp.src(paths.scripts)
+    return gulp.src('./client/www/')
       .pipe($.jshint())
       .pipe($.concat('app.min.js'))
       .pipe($.uglify())
-      .pipe(gulp.dest(paths.dist))
+      .pipe(gulp.dest('./client/dist/'))
       .pipe($.livereload());
   }
 })();
