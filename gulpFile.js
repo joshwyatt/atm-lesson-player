@@ -7,8 +7,6 @@
   var server = require('./server/server.js');
   var options = require('./gulp_helpers/options.js');
 
-  var reloadServer = $.livereload();
-  $.livereload.listen();
   // tasks
   gulp.task('default', $.sequence('scripts', 'serve'));
   gulp.task('dev', $.sequence('scripts:dev','serve', 'reload'));
@@ -39,9 +37,13 @@
   }
 
   function reload(){
+    $.livereload.listen();
+    var reloadServer = $.livereload();
+
     gulp.watch('./client/index.html').on('change', function(file){
       reloadServer.changed(file.path);
-    })
+    });
+    
   }
 })();
 

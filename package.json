@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/joshWyatt/atm-lesson-player",
   "devDependencies": {
+    "connect-livereload": "^0.5.0",
     "gulp": "^3.8.8",
     "gulp-concat": "^2.4.1",
     "gulp-inject": "^1.0.2",
