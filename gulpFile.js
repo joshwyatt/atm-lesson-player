@@ -8,12 +8,13 @@
   var options = require('./gulp_helpers/options.js');
 
   // tasks
-  gulp.task('default', $.sequence('scripts', 'serve'));
-  gulp.task('dev', $.sequence('scripts:dev','serve', 'reload'));
+  gulp.task('default', $.sequence('scripts:prod', 'serve'));
+  gulp.task('dev', $.sequence('scripts:dev','inject:dev', 'serve', 'reload'));
 
-  gulp.task('scripts', scripts);
+  gulp.task('scripts:prod', scriptsProd);
   gulp.task('scripts:dev', scriptsDev);
   gulp.task('serve', serve);
+  gulp.task('inject:dev', injectDev)
   gulp.task('reload', reload);
 
 
@@ -22,7 +23,7 @@
     server();
   }
 
-  function scripts(){
+  function scriptsProd(){
     return gulp.src('./client/www/')
       .pipe($.jshint())
       .pipe($.concat('app.min.js'))
@@ -31,9 +32,17 @@
   }
 
   function scriptsDev(){
-    return gulp.src('./client/www')
+    return gulp.src('./client/www/**/*.js')
       .pipe($.jshint())
-      .pipe(gulp.dest('./client/www'));
+  }
+
+  function injectDev(){
+    var target = gulp.src('./client/index.html');
+    var scripts = gulp.src(['./client/www/**/*.js'], {read: false});
+
+    return target
+      .pipe($.inject(scripts, {relative: true}))
+      .pipe(gulp.dest('./client'));
   }
 
   function reload(){
@@ -43,7 +52,7 @@
     gulp.watch('./client/index.html').on('change', function(file){
       reloadServer.changed(file.path);
     });
-    
+
   }
 })();
 
